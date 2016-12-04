@@ -18,7 +18,7 @@ If you use [SimplyEdit], the snippet below will make it easier to switch API
 keys and/or configuration while switching between development/test/production
 environments.
 
-### Usage
+### Usage 
 
 The snippet exposes two functions:
 - `simply.key(key [, host])` to set an API key
@@ -50,7 +50,7 @@ The name of the function, `simply`, is configurable in case there is already ano
 ### SimplyEdit `data` attributes
 
 The script tag, beside pointing the `src` to the `simply-edit.js` file,
-also needs to contain an api-key. Depending on how SimplyEdit is used,
+also needs to contain an api-key. Depending on how SimplyEdit is used, 
 other attributes can also be set to configure SimplyEdit.
 
 For instance, the script tag from the **simplyedit.io** website looks like this:
@@ -67,8 +67,7 @@ SimplyEdit Launched version 1.0 in October 2016 but I was lucky enough to be
 [the first registrant] when SimplyEdit went into Beta back in November 2015.
 This earned me a vanity key to use with their API.
 
-Being a developer, I tend to use so called [canary] (early release) version instead
-of their stable release.
+When on a development environment, I tend to use so called [canary] (early release) version instead of the stable release.
 
 As [my website] is hosted using [Github Pages], I also need to add a custom endpoint
 where SimplyEdit can store my data.
@@ -86,19 +85,13 @@ Although a comercial license is required for use in production, SimplyEdit is
 graceful enough to offer development API keys for free. These work on Localhost,
 Github or Heroku (depending on the API key used). They also offer a 30 day free trial.
 
-### Switching API keys
-
-One thing I noticed when developing with SimplyEdit, was that I kept switching
-API keys and storage endpoints between environments. I was manually editing the
-attributes of the script tag.
-
 ### Automing the process
 
 What I tended to do, when I switched environments or development machines (desktop, laptop, chromebook, tablet) is change the API key, as each machine had a different URL on which development took place.
 
 Depending on the phase the project was in (concept, develop, test, acceptance, production), I also tended to change the storage URL. I really didn't want to accidentally mess up the content in production when testing things.
 
-So I created a small javascript snippet to automate this process.
+So I created a small javascript snippet to automate this process. 
 
 ### The Javascript snippet
 
@@ -129,7 +122,7 @@ After some tweaking, the snippet ended up like this:
       };
     })(window, document, 'script', 'simply');
 
-Although the code should be simple enough to understand, adding 25 lines of JS code does not exactly feel "lightweight".
+Although the code should be simple enough to understand, adding 25 lines of JS code does not exactly feel "lightweight". 
 
 ### Minifying
 
@@ -186,7 +179,7 @@ For my attributes I would add some extra settings for use an various different h
     simply.key('github', 'potherca.github.io');
     /* Use Heroku to run an acceptance environment */
     simply.key('heroku', 'potherca.herokuapp.com');
-
+    
     /* Production data is stored on Github */
     simply.set('endpoint', 'https://github.com/Potherca/potherca.github.io/');
     /* When developing on Cloud9 (https://c9.io/) data is stored elsewhere */
