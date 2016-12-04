@@ -18,7 +18,7 @@ If you use [SimplyEdit], the snippet below will make it easier to switch API
 keys and/or configuration while switching between development/test/production
 environments.
 
-### Usage 
+### Usage
 
 The snippet exposes two functions:
 - `simply.key(key [, host])` to set an API key
@@ -50,7 +50,7 @@ The name of the function, `simply`, is configurable in case there is already ano
 ### SimplyEdit `data` attributes
 
 The script tag, beside pointing the `src` to the `simply-edit.js` file,
-also needs to contain an api-key. Depending on how SimplyEdit is used, 
+also needs to contain an api-key. Depending on how SimplyEdit is used,
 other attributes can also be set to configure SimplyEdit.
 
 For instance, the script tag from the **simplyedit.io** website looks like this:
@@ -98,7 +98,7 @@ What I tended to do, when I switched environments or development machines (deskt
 
 Depending on the phase the project was in (concept, develop, test, acceptance, production), I also tended to change the storage URL. I really didn't want to accidentally mess up the content in production when testing things.
 
-So I created a small javascript snippet to automate this process. 
+So I created a small javascript snippet to automate this process.
 
 ### The Javascript snippet
 
@@ -129,7 +129,7 @@ After some tweaking, the snippet ended up like this:
       };
     })(window, document, 'script', 'simply');
 
-Although the code should be simple enough to understand, adding 25 lines of JS code does not exactly feel "lightweight". 
+Although the code should be simple enough to understand, adding 25 lines of JS code does not exactly feel "lightweight".
 
 ### Minifying
 
@@ -147,9 +147,7 @@ The functionality is exactly the same only a lot less readable. It is also lot s
 
 #### The SimplyEdit Website
 
-Take the data atributes from the SimplyEdit website. They are all rather straightforward. No host switching is needed.
-
-Using the snippet for those attributes would look like this:
+For an example, take the data atributes from the SimplyEdit website. The snippet with those attributes would look like this:
 
     <!-- SimplyEdit Loader-->
     <script>
@@ -167,6 +165,8 @@ Using the snippet for those attributes would look like this:
 
     </script>
     <!-- End SimplyEdit Loader-->
+
+The attributes are all rather straightforward. As no host switching is used, it isn't really sensible to use the snippet, but merely using it as an example to compare with the tag  at the start of this article seemed sensible enough :-)
 
 #### My attributes
 
@@ -186,7 +186,7 @@ For my attributes I would add some extra settings for use an various different h
     simply.key('github', 'potherca.github.io');
     /* Use Heroku to run an acceptance environment */
     simply.key('heroku', 'potherca.herokuapp.com');
-    
+
     /* Production data is stored on Github */
     simply.set('endpoint', 'https://github.com/Potherca/potherca.github.io/');
     /* When developing on Cloud9 (https://c9.io/) data is stored elsewhere */
