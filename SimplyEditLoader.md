@@ -1,6 +1,6 @@
 # Hands-on with SimplyEdit: Automated attribute switching
 
-A tools I like to use when creating websites is [SimplyEdit].
+A tool I like to use when creating websites is [SimplyEdit].
 With SimplyEdit it is trivial to make content editable for the owner of the website.
 It is simply a matter of adding a `<script>` tag and some `data` attributes.
 (It's called **Simply**Edit for a reason...)
@@ -81,7 +81,7 @@ Putting all of this together, _my_ script tag looks like this:
 
 ### SimplyEdit API keys
 
-Although a comercial license is required for use in production, SimplyEdit is
+Although a commercial license is required for use in production, SimplyEdit is
 graceful enough to offer development API keys for free. These are:
 
 - `codepen` for on https://codepen.io/
@@ -91,7 +91,7 @@ graceful enough to offer development API keys for free. These are:
 
 Besides being very open to adding more development keys, they also off a 30 day free trial.
 
-### Automing the process
+### Automating the process
 
 What I tended to do, when I switched environments or development machines (desktop, laptop, chromebook, tablet) is change the API key, as each machine had a different URL on which development took place.
 
