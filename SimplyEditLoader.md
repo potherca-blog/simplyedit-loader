@@ -1,5 +1,7 @@
 # Hands-on with SimplyEdit: Automated attribute switching
 
+![SimplyEdit Logo](https://simplyedit.io/img/logo.svg)
+
 A tools I like to use when creating websites is [SimplyEdit].
 With SimplyEdit it is trivial to make content editable for the owner of the website.
 It is simply a matter of adding a `<script>` tag and some `data` attributes.
