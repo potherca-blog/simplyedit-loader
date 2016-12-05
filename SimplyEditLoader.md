@@ -18,7 +18,7 @@ If you use [SimplyEdit], the snippet below will make it easier to switch API
 keys and/or configuration while switching between development/test/production
 environments.
 
-### Usage 
+### Usage
 
 The snippet exposes two functions:
 - `simply.key(key [, host])` to set an API key
@@ -50,7 +50,7 @@ The name of the function, `simply`, is configurable in case there is already ano
 ### SimplyEdit `data` attributes
 
 The script tag, beside pointing the `src` to the `simply-edit.js` file,
-also needs to contain an api-key. Depending on how SimplyEdit is used, 
+also needs to contain an api-key. Depending on how SimplyEdit is used,
 other attributes can also be set to configure SimplyEdit.
 
 For instance, the script tag from the **simplyedit.io** website looks like this:
@@ -82,8 +82,14 @@ Putting all of this together, _my_ script tag looks like this:
 ### SimplyEdit API keys
 
 Although a comercial license is required for use in production, SimplyEdit is
-graceful enough to offer development API keys for free. These work on Localhost,
-Github or Heroku (depending on the API key used). They also offer a 30 day free trial.
+graceful enough to offer development API keys for free. These are:
+
+- `codepen` for on https://codepen.io/
+- `github` for https://github.io/ sub-domains
+- `heroku` for https://herokuapp.com sub-domains
+- `localhost` for on http://localhost/
+
+Besides being very open to adding more development keys, they also off a 30 day free trial.
 
 ### Automing the process
 
@@ -91,7 +97,7 @@ What I tended to do, when I switched environments or development machines (deskt
 
 Depending on the phase the project was in (concept, develop, test, acceptance, production), I also tended to change the storage URL. I really didn't want to accidentally mess up the content in production when testing things.
 
-So I created a small javascript snippet to automate this process. 
+So I created a small javascript snippet to automate this process.
 
 ### The Javascript snippet
 
@@ -122,7 +128,7 @@ After some tweaking, the snippet ended up like this:
       };
     })(window, document, 'script', 'simply');
 
-Although the code should be simple enough to understand, adding 25 lines of JS code does not exactly feel "lightweight". 
+Although the code should be simple enough to understand, adding 25 lines of JS code does not exactly feel "lightweight".
 
 ### Minifying
 
@@ -179,7 +185,7 @@ For my attributes I would add some extra settings for use an various different h
     simply.key('github', 'potherca.github.io');
     /* Use Heroku to run an acceptance environment */
     simply.key('heroku', 'potherca.herokuapp.com');
-    
+
     /* Production data is stored on Github */
     simply.set('endpoint', 'https://github.com/Potherca/potherca.github.io/');
     /* When developing on Cloud9 (https://c9.io/) data is stored elsewhere */
