@@ -35,7 +35,7 @@ The name of the function, `simply`, is configurable in case there is already ano
 
     <!-- SimplyEdit Loader-->
     <script>
-    (function(s,i,m,p,l,y){function c(i,e,n){(void 0===n||n===s.location.host)&&l.setAttribute(i,e)}
+    !(function(s,i,m,p,l,y){function c(i,e,n){(void 0===n||n===s.location.host)&&l.setAttribute(i,e)}
     l=l||i.createElement(m),l.async=1,l.src="https://cdn.simplyedit.io/1/simply-edit.js",
     y=y||i.scripts[0],y.parentNode.insertBefore(l,y),s[p]=s[p]||{key:function(t,i){
     c("data-api-key",t,i)},set:function(t,i,e){c("data-simply-"+t,i,e)}}
@@ -136,7 +136,7 @@ Although the code should be simple enough to understand, adding 25 lines of JS c
 
 Taking a cue from [Google's Analytics tracking snippet] (and Mathias Bynens [optimizations of the snippet]), I decided to minify the code. The final result is this:
 
-    (function(s,i,m,p,l,y){function c(i,e,n){(void 0===n||n===s.location.host)&&l.setAttribute(i,e)}
+    !(function(s,i,m,p,l,y){function c(i,e,n){(void 0===n||n===s.location.host)&&l.setAttribute(i,e)}
     l=l||i.createElement(m),l.async=1,l.src="https://cdn.simplyedit.io/1/simply-edit.js",
     y=y||i.scripts[0],y.parentNode.insertBefore(l,y),s[p]=s[p]||{key:function(t,i){
     c("data-api-key",t,i)},set:function(t,i,e){c("data-simply-"+t,i,e)}}
@@ -152,7 +152,7 @@ For an example, take the data atributes from the SimplyEdit website. The snippet
 
     <!-- SimplyEdit Loader-->
     <script>
-    (function(s,i,m,p,l,y){function c(i,e,n){(void 0===n||n===s.location.host)&&l.setAttribute(i,e)}
+    !(function(s,i,m,p,l,y){function c(i,e,n){(void 0===n||n===s.location.host)&&l.setAttribute(i,e)}
     l=l||i.createElement(m),l.async=1,l.src="https://cdn.simplyedit.io/1/simply-edit.js",
     y=y||i.scripts[0],y.parentNode.insertBefore(l,y),s[p]=s[p]||{key:function(t,i){
     c("data-api-key",t,i)},set:function(t,i,e){c("data-simply-"+t,i,e)}}
@@ -175,7 +175,7 @@ For my attributes I would add some extra settings for use an various different h
 
     <!-- SimplyEdit Loader-->
     <script>
-    (function(s,i,m,p,l,y){function c(i,e,n){(void 0===n||n===s.location.host)&&l.setAttribute(i,e)}
+    !(function(s,i,m,p,l,y){function c(i,e,n){(void 0===n||n===s.location.host)&&l.setAttribute(i,e)}
     l=l||i.createElement(m),l.async=1,l.src="https://cdn.simplyedit.io/1/simply-edit.js",
     y=y||i.scripts[0],y.parentNode.insertBefore(l,y),s[p]=s[p]||{key:function(t,i){
     c("data-api-key",t,i)},set:function(t,i,e){c("data-simply-"+t,i,e)}}
