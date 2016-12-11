@@ -1,0 +1,15 @@
+baseurl: /simplyedit-loader
+
+markdown: kramdown
+
+defaults:
+  -
+    scope:
+      path: "" # empty string for all files
+    values:
+      layout: "default"
+
+webrick:
+  headers:
+    # For more information on the Clacks header see: http://www.gnuterrypratchett.com/#apache
+    X-Clacks-Overhead: GNU Terry Pratchet
