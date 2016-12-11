@@ -1,3 +1,7 @@
+---
+permalink: /
+---
+
 # Hands-on with SimplyEdit: Automated attribute switching
 
 ![SimplyEdit Logo](https://simplyedit.io/img/logo.svg)
@@ -7,12 +11,28 @@ With SimplyEdit it is trivial to make content editable for the owner of the webs
 It is simply a matter of adding a `<script>` tag and some `data` attributes.
 (It's called **Simply**Edit for a reason...)
 
-One thing I noticed when developing with [SimplyEdit], was that I kept switching
+One thing I noticed when developing with SimplyEdit, was that I kept switching
 API keys and storage endpoints between environments. I was manually editing the
 attributes of the script tag.
 
 Being a developer, I prefer automating things to save time and avoid human error.
 So I created a small javascript snippet to automate this process.
+
+
+## Table of Contents
+
+* [TL;DR](#tldr)
+  * [Usage](#usage)
+  * [The Snippet](#the-snippet)
+* [The Full Story](#the-full-story)
+  * [SimplyEdit data attributes](#simplyedit-data-attributes)
+  * [SimplyEdit API keys](#simplyedit-api-keys)
+  * [Automating the process](#automating-the-process)
+  * [The Javascript snippet](#the-javascript-snippet)
+  * [Minifying](#minifying)
+  * [Examples](#examples)
+    * [The SimplyEdit Website](#the-simplyedit-website)
+    * [My attributes](#my-attributes)
 
 ## TL;DR
 
