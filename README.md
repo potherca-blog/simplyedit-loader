@@ -43,6 +43,7 @@ environments.
 ### Usage
 
 The snippet exposes two functions:
+
 - `simply.key(key [, host])` to set an API key
 - `simply.set(name, value [, host])` to set any given SimplyEdit attribute.
 
