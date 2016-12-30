@@ -1,8 +1,8 @@
 (function createSimplyEditScriptTag(window, document, elementName, functionName, element, siblingElement) {
 
-  function setAttribute(p_sKey, p_sValue, p_sHost) {
+  function setAttribute(p_sName, p_sValue, p_sHost) {
     if (p_sHost === undefined || p_sHost === window.location.host) {
-      element.setAttribute(p_sKey, p_sValue);
+      element.setAttribute(p_sName, p_sValue);
     }
   }
 
@@ -17,8 +17,8 @@
     key: function (p_sKey, p_sHost) {
       setAttribute('data-api-key', p_sKey, p_sHost);
     },
-    set: function (p_sKey, p_sValue, p_sHost) {
-      setAttribute('data-simply-' + p_sKey, p_sValue, p_sHost);
+    set: function (p_sName, p_sValue, p_sHost) {
+      setAttribute('data-simply-' + p_sName, p_sValue, p_sHost);
     }
   };
 })(window, document, 'script', 'simply');
