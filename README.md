@@ -42,24 +42,26 @@ environments.
 
 ### Usage
 
-The snippet exposes two functions:
+The snippet exposes three functions:
 
 - `simply.key(key [, host])` to set an API key
 - `simply.set(name, value [, host])` to set any given SimplyEdit attribute.
+- `simply.src(value [, host])` to set the URL to load `simply-edit.js`.
 
-Both functions allow adding a host name, to indicate that the value should only
-be set when on _that_ host.
+All three of these functions allow adding a host name, to indicate that the value
+should only be set when on _that_ host.
 
-The name of the function, `simply`, is configurable in case there is already another piece of Javascript with the name "simply" in use.
+The name of the function, `simply`, is configurable in case there is already
+another piece of Javascript with the name "simply" in use.
 
 ### The Snippet
 
     <!-- SimplyEdit Loader-->
     <script>
-    !(function(s,i,m,p,l,y){function c(i,e,n){(void 0===n||n===s.location.host)&&l.setAttribute(i,e)}
-    l=l||i.createElement(m),l.async=1,l.src="https://cdn.simplyedit.io/1/simply-edit.js",
-    y=y||i.scripts[0],y.parentNode.insertBefore(l,y),s[p]=s[p]||{key:function(t,i){
-    c("data-api-key",t,i)},set:function(t,i,e){c("data-simply-"+t,i,e)}}
+    !(function(s,i,m,p,l,y){function d(a,b,c){if(c===undefined||c===s.location.host){l.setAttribute(a,b)}}
+    l=l||i.createElement(m);l.async=1;l.src="https://cdn.simplyedit.io/1/simply-edit.js";
+    y=y||i.scripts[0];y.parentNode.insertBefore(l,y);s[p]=s[p]||{key:function(a,b){
+    d("data-api-key",a,b)},set:function(a,b,c){d("data-simply-"+a,b,c)},src:function(a,b){d("src",a,b)}}
     })(window,document,"script","simply");
 
     simply.key('my-awesome-api-key');
@@ -72,9 +74,9 @@ The name of the function, `simply`, is configurable in case there is already ano
 
 ### SimplyEdit `data` attributes
 
-The script tag, beside pointing the `src` to the `simply-edit.js` file,
-also needs to contain an api-key. Depending on how SimplyEdit is used,
-other attributes can also be set to configure SimplyEdit.
+The script tag, beside pointing the `src` to the `simply-edit.js` file, also
+needs to contain an api-key. Depending on how SimplyEdit is used, other
+attributes can also be set to configure SimplyEdit.
 
 For instance, the script tag from the **simplyedit.io** website looks like this:
 
@@ -90,10 +92,11 @@ SimplyEdit Launched version 1.0 in October 2016 but I was lucky enough to be
 [the first registrant] when SimplyEdit went into Beta back in November 2015.
 This earned me a vanity key to use with their API.
 
-When on a development environment, I tend to use so called [canary] (early release) version instead of the stable release.
+When on a development environment, I tend to use so called [canary] (early
+release) version instead of the stable release.
 
-As [my website] is hosted using [Github Pages], I also need to add a custom endpoint
-where SimplyEdit can store my data.
+As [my website] is hosted using [Github Pages], I also need to add a custom
+endpoint where SimplyEdit can store my data.
 
 Putting all of this together, _my_ script tag looks like this:
 
@@ -112,13 +115,18 @@ graceful enough to offer development API keys for free. These are:
 - `heroku` for https://herokuapp.com sub-domains
 - `localhost` for on http://localhost/
 
-Besides being very open to adding more development keys, they also off a 30 day free trial.
+Besides being very open to adding more development keys, they also off a 30 day
+free trial.
 
 ### Automating the process
 
-What I tended to do, when I switched environments or development machines (desktop, laptop, chromebook, tablet) is change the API key, as each machine had a different URL on which development took place.
+What I tended to do, when I switched environments or development machines
+(desktop, laptop, chromebook, tablet) is change the API key, as each machine had
+a different URL on which development took place.
 
-Depending on the phase the project was in (concept, develop, test, acceptance, production), I also tended to change the storage URL. I really didn't want to accidentally mess up the content in production when testing things.
+Depending on the phase the project was in (concept, develop, test, acceptance,
+production), I also tended to change the storage URL. I really didn't want to
+accidentally mess up the content in production when testing things.
 
 So I created a small javascript snippet to automate this process.
 
@@ -147,36 +155,45 @@ After some tweaking, the snippet ended up like this:
         },
         set: function (p_sName, p_sValue, p_sHost) {
           setAttribute('data-simply-' + p_sName, p_sValue, p_sHost);
+        },
+        src: function (p_sValue, p_sHost) {
+          setAttribute('src', p_sValue, p_sHost);
         }
       };
     })(window, document, 'script', 'simply');
 
-Although the code should be simple enough to understand, adding 25 lines of JS code does not exactly feel "lightweight".
+Although the code should be simple enough to understand, adding 25 lines of JS
+code does not exactly feel "lightweight".
 
 ### Minifying
 
-Taking a cue from [Google's Analytics tracking snippet] (and Mathias Bynens [optimizations of the snippet]), I decided to minify the code. The final result is this:
+Taking a cue from [Google's Analytics tracking snippet] (and Mathias Bynens
+[optimizations of the snippet]), I decided to minify the code.
 
-    !(function(s,i,m,p,l,y){function c(i,e,n){(void 0===n||n===s.location.host)&&l.setAttribute(i,e)}
-    l=l||i.createElement(m),l.async=1,l.src="https://cdn.simplyedit.io/1/simply-edit.js",
-    y=y||i.scripts[0],y.parentNode.insertBefore(l,y),s[p]=s[p]||{key:function(t,i){
-    c("data-api-key",t,i)},set:function(t,i,e){c("data-simply-"+t,i,e)}}
+The final result is this:
+
+    !(function(s,i,m,p,l,y){function d(a,b,c){if(c===undefined||c===s.location.host){l.setAttribute(a,b)}}
+    l=l||i.createElement(m);l.async=1;l.src="https://cdn.simplyedit.io/1/simply-edit.js";
+    y=y||i.scripts[0];y.parentNode.insertBefore(l,y);s[p]=s[p]||{key:function(a,b){
+    d("data-api-key",a,b)},set:function(a,b,c){d("data-simply-"+a,b,c)},src:function(a,b){d("src",a,b)}}
     })(window,document,"script","simply");
 
-The functionality is exactly the same only a lot less readable. It is also lot shorter. Pasting a mere 5 lines feels a lot more lightweight.
+The functionality is exactly the same only a lot less readable. It is also lot
+shorter. Pasting a mere 5 lines feels a lot more lightweight.
 
 ### Examples
 
 #### The SimplyEdit Website
 
-For an example, take the data atributes from the SimplyEdit website. The snippet with those attributes would look like this:
+For an example, take the data atributes from the SimplyEdit website. The snippet
+with those attributes would look like this:
 
     <!-- SimplyEdit Loader-->
     <script>
-    !(function(s,i,m,p,l,y){function c(i,e,n){(void 0===n||n===s.location.host)&&l.setAttribute(i,e)}
-    l=l||i.createElement(m),l.async=1,l.src="https://cdn.simplyedit.io/1/simply-edit.js",
-    y=y||i.scripts[0],y.parentNode.insertBefore(l,y),s[p]=s[p]||{key:function(t,i){
-    c("data-api-key",t,i)},set:function(t,i,e){c("data-simply-"+t,i,e)}}
+    !(function(s,i,m,p,l,y){function d(a,b,c){if(c===undefined||c===s.location.host){l.setAttribute(a,b)}}
+    l=l||i.createElement(m);l.async=1;l.src="https://cdn.simplyedit.io/1/simply-edit.js";
+    y=y||i.scripts[0];y.parentNode.insertBefore(l,y);s[p]=s[p]||{key:function(a,b){
+    d("data-api-key",a,b)},set:function(a,b,c){d("data-simply-"+a,b,c)},src:function(a,b){d("src",a,b)}}
     })(window,document,"script","simply");
 
     simply.key('ba1a14669981509ed5012533e8a54bf9');
@@ -188,18 +205,21 @@ For an example, take the data atributes from the SimplyEdit website. The snippet
     </script>
     <!-- End SimplyEdit Loader-->
 
-The attributes are all rather straightforward. As no host switching is used, it isn't really sensible to use the snippet, but merely using it as an example to compare with the tag  at the start of this article seemed sensible enough :-)
+The attributes are all rather straightforward. As no host switching is used, it
+isn't really sensible to use the snippet, but merely using it as an example to
+compare with the tag  at the start of this article seemed sensible enough :-)
 
 #### My attributes
 
-For my attributes I would add some extra settings for use an various different hosts. Putting it together it would look like this:
+For my attributes I would add some extra settings for use an various different
+hosts. Putting it together it would look like this:
 
     <!-- SimplyEdit Loader-->
     <script>
-    !(function(s,i,m,p,l,y){function c(i,e,n){(void 0===n||n===s.location.host)&&l.setAttribute(i,e)}
-    l=l||i.createElement(m),l.async=1,l.src="https://cdn.simplyedit.io/1/simply-edit.js",
-    y=y||i.scripts[0],y.parentNode.insertBefore(l,y),s[p]=s[p]||{key:function(t,i){
-    c("data-api-key",t,i)},set:function(t,i,e){c("data-simply-"+t,i,e)}}
+    !(function(s,i,m,p,l,y){function d(a,b,c){if(c===undefined||c===s.location.host){l.setAttribute(a,b)}}
+    l=l||i.createElement(m);l.async=1;l.src="https://cdn.simplyedit.io/1/simply-edit.js";
+    y=y||i.scripts[0];y.parentNode.insertBefore(l,y);s[p]=s[p]||{key:function(a,b){
+    d("data-api-key",a,b)},set:function(a,b,c){d("data-simply-"+a,b,c)},src:function(a,b){d("src",a,b)}}
     })(window,document,"script","simply");
 
     /* My API key also works on localhost */
@@ -214,8 +234,8 @@ For my attributes I would add some extra settings for use an various different h
     /* When developing on Cloud9 (https://c9.io/) data is stored elsewhere */
     simply.set('endpoint', '/storage/', 'website-potherca.c9users.io');
     /* On a development environment, use the canary build */
-    simply.set('src', 'https://canary.simplyedit.io/1/simply-edit.js', 'localhost');
-    simply.set('src', 'https://canary.simplyedit.io/1/simply-edit.js', 'website-potherca.c9users.io');
+    simply.src('https://canary.simplyedit.io/1/simply-edit.js', 'localhost');
+    simply.src('https://canary.simplyedit.io/1/simply-edit.js', 'website-potherca.c9users.io');
     </script>
     <!-- End SimplyEdit Loader-->
 
