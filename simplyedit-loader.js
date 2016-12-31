@@ -19,6 +19,9 @@
     },
     set: function (p_sName, p_sValue, p_sHost) {
       setAttribute('data-simply-' + p_sName, p_sValue, p_sHost);
+    },
+    src: function (p_sValue, p_sHost) {
+      setAttribute('src', p_sValue, p_sHost);
     }
   };
 })(window, document, 'script', 'simply');
